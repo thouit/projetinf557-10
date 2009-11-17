@@ -17,24 +17,47 @@ class PhysicalLayer {
   int successRate = 100;
 
   // Socket, port and group for broadcasting
-  MulticastSocket client;
-  int port;
-  String group;
+  DatagramSocket client;
+  int in_port,out_port;
+  String server;
 
-
-  public PhysicalLayer() {
+  public PhysicalLayer(String server) {
     try
       {
 	rb = new ReceivedBuffer();
-	client = new MulticastSocket();
-	port = 11111;
-	group = "225.6.7.8";
+	client = new DatagramSocket();
+        this.server = server;
+	in_port = 11111;
+	out_port = 11111;
 
 	// here, we create and launch the listenning
 	// server waiting for messages. When a message
 	// is caught by the server, it is enqueue in 
 	// the received buffer.
-	Thread t_s = new Thread(new Server(rb));    
+	Thread t_s = new Thread(new Server(rb,in_port));    
+	t_s.start();
+      }
+    catch(IOException e) 
+      {
+	System.out.println(e);
+	System.exit(0); // kill program
+      }
+  }
+
+  public PhysicalLayer(String server,int in,int out) {
+    try
+      {
+	rb = new ReceivedBuffer();
+	client = new DatagramSocket();
+	this.server = server;
+	in_port = in;
+	out_port = out;
+
+	// here, we create and launch the listenning
+	// server waiting for messages. When a message
+	// is caught by the server, it is enqueue in 
+	// the received buffer.
+	Thread t_s = new Thread(new Server(rb,in_port));    
 	t_s.start();
       }
     catch(IOException e) 
@@ -66,13 +89,10 @@ class PhysicalLayer {
 	
 	try
 	  {
-	    DatagramPacket pack = new DatagramPacket(buf, buf.length, InetAddress.getByName(group), port);
+	    DatagramPacket pack = new DatagramPacket(buf, buf.length,
+		InetAddress.getByName(server), out_port);
 	    
-	    // send(packet, time) is deprecated. 
-	    // This a solution proposed by Sun.
-	    client.setTimeToLive(4);
 	    client.send(pack);
-	    client.setTimeToLive(4);
 	  }
 	catch(UnknownHostException e) 
 	  {
@@ -104,22 +124,21 @@ class PhysicalLayer {
 class Server implements Runnable {
 
   ReceivedBuffer rb;
+  int port;
 
-  public Server(ReceivedBuffer rb) {
+  public Server(ReceivedBuffer rb,int p) {
     this.rb = rb;
+    port = p;
   }
 
   public void run() {
     
-    int port = 11111;
-    String group = "225.6.7.8";
-    MulticastSocket server = null;
+    DatagramSocket server = null;
     byte[] buf;
 
     try
       {		
-	server = new MulticastSocket(port);
-	server.joinGroup(InetAddress.getByName(group));
+	server = new DatagramSocket(port);
       } 
     catch(IOException e) 
       {
