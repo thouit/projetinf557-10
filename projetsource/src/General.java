@@ -1,10 +1,6 @@
 import java.net.InetAddress;
 import java.net.UnknownHostException;
-import java.util.HashMap;
-import java.util.NoSuchElementException;
 import java.util.StringTokenizer;
-import java.util.Timer;
-import java.util.concurrent.ConcurrentHashMap;
 
 public class General {
 
@@ -39,7 +35,7 @@ public class General {
 		
 		while (true) {
 			// Process incoming messages
-			msg = pl.receive();
+			//msg = pl.receive();
 			if (msg != null) {
 				System.out.println(msg);
 				StringTokenizer st = new StringTokenizer(msg, ":");

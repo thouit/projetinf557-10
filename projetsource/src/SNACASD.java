@@ -107,49 +107,6 @@ class SNACASD {
 			return getUniqueName();
 	}
 
-	// WARNING: this method is void here!!!
-	// In the TD, it was a boolean method but it was
-	// useless at the time, sorry :)
-	public void handleDiscover() {
-		// we assume here that message is a
-		// well-formatted DISCOVER message.
-
-		pl.send("ALL:" + myName + ":SERVICES:");
-	}
-
-	public void handleServices(String message) {
-		String[] splitMessage = message.split(":");
-		Timer timer = new Timer();
-
-		if (splitMessage[0].equals("ALL") || splitMessage[0].equals(myName)) {
-			String friendName = splitMessage[1];
-
-			if (hm.containsKey(friendName))
-				hm.get(friendName).cancel();
-
-			if (hm2.containsKey(friendName)) {
-				hm2.get(friendName).cancel();
-				hm2.remove(friendName);
-			}
-
-			FriendTask task = new FriendTask(this, friendName);
-			timer.schedule(task, TIMEOUTFRIENDNAME);
-			hm.put(friendName, timer);
-		}
-	}
-
-	public boolean isFriendAlive(String friend) {
-		return hm.containsKey(friend);
-	}
-
-	public void search4Friend(String friendName) {
-		pl.send(friendName + ":" + myName + ":DISCOVER:");
-		Friend2Task task = new Friend2Task(hm, hm2, friendName);
-		Timer timer = new Timer();
-		timer.schedule(task, TIMEOUTFRIENDNAME);
-		hm2.put(friendName, timer);
-	}
-
 	public void waitRandomly() {
 		Random ran = new Random();
 
@@ -179,39 +136,4 @@ class ServicesTask extends TimerTask {
 	}
 }
 
-class FriendTask extends TimerTask {
 
-	SNACASD snacasd;
-
-	String friendName;
-
-	FriendTask(SNACASD snacasd, String friendName) {
-		this.snacasd = snacasd;
-		this.friendName = friendName;
-	}
-
-	public void run() {
-		snacasd.search4Friend(friendName);
-	}
-}
-
-class Friend2Task extends TimerTask {
-
-	HashMap<String, Timer> hm;
-
-	HashMap<String, Timer> hm2;
-
-	String friendName;
-
-	Friend2Task(HashMap<String, Timer> hm, HashMap<String, Timer> hm2,
-			String friendName) {
-		this.hm = hm;
-		this.hm2 = hm2;
-		this.friendName = friendName;
-	}
-
-	public void run() {
-		hm.remove(friendName);
-		hm2.remove(friendName);
-	}
-}
