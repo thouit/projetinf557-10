@@ -14,10 +14,6 @@ class SNACASD {
 
 	final long TIMEOUTFRIENDNAME = 20000;
 
-	HashMap<String, Timer> hm;
-
-	HashMap<String, Timer> hm2;
-
 	Timer myNameIs;
 
 	public SNACASD(PhysicalLayer pl, int retries, int maxtime) {
@@ -25,9 +21,8 @@ class SNACASD {
 		this.retries = retries;
 		this.maxtime = maxtime;
 
-		hm = new HashMap<String, Timer>();
-		hm2 = new HashMap<String, Timer>();
 		myNameIs = new Timer();
+		
 	}
 
 	public boolean verifyUniqueness(String name) {

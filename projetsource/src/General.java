@@ -31,15 +31,15 @@ public class General {
 		// tell it to the main hub
 		pl.send("server:" + myID + ":serverjoin:" + localname);
 
-		String msg = null;
+		Msg msg = null;
 		
 		while (true) {
 			// Process incoming messages
-			//msg = pl.receive();
-			if (msg != null) {
-				System.out.println(msg);
-				StringTokenizer st = new StringTokenizer(msg, ":");
-
+			msg = new Msg(pl.receive());
+			if (msg != null && msg.header != null) {
+				System.out.println(msg.header + msg.options + msg.body);
+				//envoie du msg aux classes traitant le message
+				
 			}
 			//pl.send("ALL:" + myID + ":HELLO:");
 			
