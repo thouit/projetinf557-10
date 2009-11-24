@@ -10,7 +10,7 @@ public class General {
 		// a
 		// physical
 		// layer
-		SNACASD sd = new SNACASD(pl, 5, 1); // initiate a
+		//SNACASD sd = new SNACASD(pl, 5, 1); // initiate a
 		// name service
 		// discovery
 		// module
@@ -38,7 +38,7 @@ public class General {
 			if (msg != null && msg.header != null) {
 				System.out.println(msg.header + msg.options + msg.body);
 				//envoie du msg aux classes traitant le message, d'abord le header = header + options
-				Header header = new Header(msg.header, msg.options, myID);
+				new Header(msg.header, msg.options, myID);
 				//envoie du msg aux classes traitant le message, ensuite le message en lui même = body
 				
 				//puis renvoie du message si destinataire autre que moi.

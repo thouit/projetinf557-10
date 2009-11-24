@@ -6,7 +6,7 @@ public class Test {
 			System.out.println(msg.header + msg.options + msg.body);
 			// envoie du msg aux classes traitant le message, d'abord le header
 			// = header + options
-			Header header = new Header(msg.header, msg.options, "Thomas");
+			new Header(msg.header, msg.options, "Thomas");
 			// envoie du msg aux classes traitant le message, ensuite le message
 			// en lui même = body
 		}
