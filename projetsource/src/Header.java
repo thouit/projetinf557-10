@@ -35,6 +35,7 @@ public class Header {
 		DEST = st.nextToken();
 		FROM = st.nextToken();
 		OPTNBR = st.nextToken().toCharArray()[0];
+		System.out.println(OPTNBR);
 	}
 
 	public void traiterOptions() {

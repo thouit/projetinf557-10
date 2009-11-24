@@ -33,7 +33,7 @@ public class TraiterOptions {
 					break;
 
 				default:
-					System.out.println("option inconnue");
+					System.out.println("*** Warning : option inconnue ***");
 					break;
 
 				}
@@ -55,7 +55,7 @@ public class TraiterOptions {
 					break;
 
 				default:
-					System.out.println("option inconnue");
+					System.out.println("*** Warning : option inconnue ***");
 					break;
 
 				}

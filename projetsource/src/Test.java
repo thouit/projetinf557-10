@@ -1,16 +1,14 @@
-import java.util.HashMap;
-
-
 public class Test {
 
-	public static void main(String[] args){
-		HashMap<Integer, String> hm = new HashMap<Integer, String>();
-		hm.put(18, "18v");
-		hm.put(27, "27v");
-		hm.put(45, "45v");
-		hm.put(11, "11v");
-		for (Integer i : hm.keySet()){
-			System.out.println(i + " : " + hm.get(i));
+	public static void main(String[] args) {
+		Msg msg = new Msg(CreationMsg.create());
+		if (msg != null && msg.header != null) {
+			System.out.println(msg.header + msg.options + msg.body);
+			// envoie du msg aux classes traitant le message, d'abord le header
+			// = header + options
+			Header header = new Header(msg.header, msg.options, "Thomas");
+			// envoie du msg aux classes traitant le message, ensuite le message
+			// en lui même = body
 		}
 	}
 }

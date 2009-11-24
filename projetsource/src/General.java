@@ -41,6 +41,7 @@ public class General {
 				Header header = new Header(msg.header, msg.options, myID);
 				//envoie du msg aux classes traitant le message, ensuite le message en lui même = body
 				
+				//puis renvoie du message si destinataire autre que moi.
 				
 			}
 			//pl.send("ALL:" + myID + ":HELLO:");
