@@ -1,6 +1,5 @@
 import java.net.InetAddress;
 import java.net.UnknownHostException;
-import java.util.StringTokenizer;
 
 public class General {
 
@@ -38,7 +37,10 @@ public class General {
 			msg = new Msg(pl.receive());
 			if (msg != null && msg.header != null) {
 				System.out.println(msg.header + msg.options + msg.body);
-				//envoie du msg aux classes traitant le message
+				//envoie du msg aux classes traitant le message, d'abord le header = header + options
+				Header header = new Header(msg.header, msg.options, myID);
+				//envoie du msg aux classes traitant le message, ensuite le message en lui même = body
+				
 				
 			}
 			//pl.send("ALL:" + myID + ":HELLO:");
