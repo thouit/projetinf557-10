@@ -4,22 +4,11 @@ import java.net.UnknownHostException;
 public class General {
 
 	public static void main(String[] args) {
-		// the "main loop" of your networked application
-		//
-		PhysicalLayer pl = new PhysicalLayer("volvo"); // initiate
-		// a
-		// physical
-		// layer
-		//SNACASD sd = new SNACASD(pl, 5, 1); // initiate a
-		// name service
-		// discovery
-		// module
 
-		String myID = CreationMsg.createName("127.000.000.001"); // check the uniqueness of
-		// some
-		// id so you try to keep the
-		// same all the time
-		// retrieve the name of your computer
+		PhysicalLayer pl = new PhysicalLayer("volvo"); // initiate
+
+		String myID = CreationMsg.createName("127.000.000.001");
+
 		String localname = null;
 		try {
 			localname = InetAddress.getLocalHost().getHostName();
@@ -27,28 +16,33 @@ public class General {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		// tell it to the main hub
+
 		pl.send("server:" + myID + ":serverjoin:" + localname);
 
 		Msg msg = null;
-		
+
 		while (true) {
-			// Process incoming messages
+			// On reçoit le message entrant
 			msg = new Msg(pl.receive());
 			if (msg != null && msg.header != null) {
 				System.out.println(msg.header + msg.options + msg.body);
-				//envoie du msg aux classes traitant le message, d'abord le header = header + options
-				new Header(msg.header, msg.options, myID);
-				//envoie du msg aux classes traitant le message, ensuite le message en lui même = body
-				
-				//puis renvoie du message si destinataire autre que moi.
-				
+				// envoie du msg aux classes traitant le message, d'abord le
+				// header = header + options
+				Header h = new Header(msg.header, msg.options, myID);
+				// envoie du msg aux classes traitant le message, ensuite le
+				// message en lui même = body
+				if (h.to.jeSuisDest) {
+					System.out.println("Nous sommes destinataire du message !\r\nEnvoie du message à la couche supérieure. On n'envoie que le DATA");
+				} else {
+					System.out.println("Nous ne sommes pas destinataire du message !\r\nOn réenvoie le message en modifiant les options sur le réseau");
+					// le message à été modifié par TraiterOptions, donc on peut
+					// le reconstruire et le réenvoyer.
+					msg.options = h.reBuild();
+					// on renvoie le message
+				}
+
 			}
-			//pl.send("ALL:" + myID + ":HELLO:");
-			
 			// Sleep for milliseconds
 		}
 	}
 }
-
-

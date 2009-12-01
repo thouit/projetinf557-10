@@ -1,6 +1,12 @@
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 
+/**
+ * Classe de traitement et de stockage des options
+ * 
+ * @author Thomas
+ * 
+ */
 public class TraiterOptions {
 	HashMap<Integer, String> OPTMAP = new LinkedHashMap<Integer, String>();
 
@@ -14,6 +20,9 @@ public class TraiterOptions {
 	 * Methodes
 	 */
 
+	/**
+	 * Traitement des options
+	 */
 	public void traiterOptions() {
 		for (int i : OPTMAP.keySet()) {
 			// options globales (concernant le destinataire et les
@@ -49,6 +58,7 @@ public class TraiterOptions {
 
 			} else {// options relatives aux non destinataires
 				switch (i) {
+				// On modifie les options si besoin.
 				case 20:
 					System.out.println("option 20");
 					break;
