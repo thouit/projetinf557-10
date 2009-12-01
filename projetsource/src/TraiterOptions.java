@@ -15,52 +15,57 @@ public class TraiterOptions {
 	 */
 
 	public void traiterOptions() {
-		// peut être réorganisé en traitant les options générales puis les options du destinataire si on est le destinataire
-		if (jeSuisDest) {
-			for (int i : OPTMAP.keySet()) {
-				switch (i) {
+		for (int i : OPTMAP.keySet()) {
+			// options globales (concernant le destinataire et les
+			// non-destinataires
+			switch (i) {
+			case 0:
+				System.out.println("option 0");
+				break;
 
-				case 0:
-					System.out.println("option 0");
-					break;
+			case 1:
+				System.out.println("option 1");
+				break;
 
-				case 1:
-					System.out.println("option 1");
-					break;
-
-				case 2:
-					System.out.println("option 2");
-					break;
-
-				default:
-					System.out.println("*** Warning : option inconnue ***");
-					break;
-
-				}
+			case 2:
+				System.out.println("option 2");
+				break;
 			}
-		} else {
-			for (int i : OPTMAP.keySet()) {
+			// options relatives au destinataire
+			if (jeSuisDest) {
 				switch (i) {
-
 				case 10:
-					System.out.println("option 0");
+					System.out.println("option 10");
 					break;
 
 				case 11:
-					System.out.println("option 1");
+					System.out.println("option 11");
 					break;
 
 				case 12:
-					System.out.println("option 2");
+					System.out.println("option 12");
 					break;
-
-				default:
-					System.out.println("*** Warning : option inconnue ***");
-					break;
-
 				}
+
+			} else {// options relatives aux non destinataires
+				switch (i) {
+				case 20:
+					System.out.println("option 20");
+					break;
+
+				case 21:
+					System.out.println("option 21");
+					break;
+
+				case 22:
+					System.out.println("option 22");
+					break;
+				}
+
 			}
+
 		}
+
 	}
 
 }

@@ -15,7 +15,7 @@ public class General {
 		// discovery
 		// module
 
-		String myID = "thomas"; // check the uniqueness of
+		String myID = CreationMsg.createName("127.000.000.001"); // check the uniqueness of
 		// some
 		// id so you try to keep the
 		// same all the time

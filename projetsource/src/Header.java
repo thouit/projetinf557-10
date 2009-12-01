@@ -1,5 +1,3 @@
-import java.util.StringTokenizer;
-
 public class Header {
 
 	String header;
@@ -29,28 +27,32 @@ public class Header {
 	}
 
 	public void traiterHeader() {
+		System.out.println(header);
 		DATALENGTH = 256 * header.charAt(0) + header.charAt(1);
-		StringTokenizer st = new StringTokenizer(header, ":");
-		st.nextElement();
-		DEST = st.nextToken();
-		FROM = st.nextToken();
-		OPTNBR = st.nextToken().toCharArray()[0];
+		DEST = header.substring(2, 6);
+		FROM = header.substring(6, 10);
+		OPTNBR = header.charAt(10);
 		System.out.println(OPTNBR);
 	}
 
 	public void traiterOptions() {
-		StringTokenizer st = new StringTokenizer(options, ":");
-		if (st.countTokens() != 2 * OPTNBR) {
-			System.err.println("Le nombre d'options ou le format ne correspond pas au nombre attendu");
-		} else {
-			for (int i = 0; i < OPTNBR; i++) {
-				int opt = st.nextToken().toCharArray()[0];
-				if (!to.OPTMAP.containsKey(opt)) {
-					to.OPTMAP.put(opt, st.nextToken());
-				} else {
-					System.out.println("*** Warning : Deux options sont identiques ***");
-				}
+		System.out.println("OPTIONS : " + options);
+		int pos = 0;
+		for (int i = 0; i < OPTNBR; i++) {
+			int opt = options.charAt(pos);
+			pos++;
+			int taille = options.charAt(pos);
+			pos++;
+			System.out.println("Numéro de l'option : " + opt + " Taille de l'option : " + taille);
+			if (!to.OPTMAP.containsKey(opt)) {
+				to.OPTMAP.put(opt, options.substring(pos, pos + taille)); // a tester !!!!!!!
+			} else {
+				System.out.println("*** Warning : Deux options sont identiques ***");
 			}
+			pos += taille;
+		}
+		if (pos != options.length()) {
+			System.err.println("Erreur : Mauvais format options");
 		}
 	}
 

@@ -24,6 +24,7 @@ public class Msg {
 	}
 	
 	public void print(){
+		System.out.println(header+options+body);
 		System.out.print((int) header.charAt(2) + "." + (int) header.charAt(3) + "." + (int) header.charAt(4) + "." + (int) header.charAt(5) + ":");
 		System.out.print((int) header.charAt(6) + "." + (int) header.charAt(7) + "." + (int) header.charAt(8) + "." + (int) header.charAt(9) + ":");
 		System.out.println((int) header.charAt(10) + ":" + options + ":" + body);
