@@ -311,6 +311,7 @@ class BellmanFord {
 			System.exit(0);
 		}
 		String ID = args[0];
+		//tester si ID est au bon format
 		PhysicalLayer pl = new PhysicalLayer(args[1]);
 		// BellmanFord router = new BellmanFord(pl, ID);
 
