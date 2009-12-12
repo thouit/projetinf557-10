@@ -17,7 +17,7 @@ public class SendInterface extends javax.swing.JFrame implements ActionListener 
 
 	/** Creates new form SendInterface */
 	public SendInterface(PhysicalLayer pl) {
-		this.pl=pl;
+		this.pl = pl;
 		initComponents();
 	}
 
@@ -424,13 +424,11 @@ public class SendInterface extends javax.swing.JFrame implements ActionListener 
 	 * @param args
 	 *            the command line arguments
 	 */
-	/*public static void main(String args[]) {
-		java.awt.EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				new SendInterface(pl).setVisible(true);
-			}
-		});
-	}*/
+	/*
+	 * public static void main(String args[]) {
+	 * java.awt.EventQueue.invokeLater(new Runnable() { public void run() { new
+	 * SendInterface(pl).setVisible(true); } }); }
+	 */
 
 	// Variables declaration - do not modify
 	private javax.swing.JTextField id1;
@@ -504,7 +502,7 @@ public class SendInterface extends javax.swing.JFrame implements ActionListener 
 	private javax.swing.JTextField val9;
 
 	// End of variables declaration
-	public void actionPerformed(ActionEvent e){
+	public void actionPerformed(ActionEvent e) {
 		if (e.getActionCommand().equals("Envoyer")) {
 			String DEST = jTextField1.getText();
 			String FROM = jTextField2.getText();
@@ -583,9 +581,11 @@ public class SendInterface extends javax.swing.JFrame implements ActionListener 
 			String DATA = jTextPane1.getText();
 			String msg = CreationMsg.buildMsg(FROM, DEST, NBOPTIONS, OPTIONS, DATA);
 			Message mess = new Message(msg);
-			System.out.print("ENVOI : ");
-			mess.print();
-			pl.send(mess);
+			if (mess.good) {
+				System.out.print("ENVOI : ");
+				mess.print();
+				pl.send(mess);
+			}
 		}
 
 	}

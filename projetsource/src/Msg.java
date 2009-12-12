@@ -1,5 +1,6 @@
 /**
- * Classe des messages
+ * Classe des messages Cette classe est elle aussi devenue obsolete car présente
+ * dans Message
  * 
  * @author Thomas
  * 

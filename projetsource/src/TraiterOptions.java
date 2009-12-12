@@ -60,7 +60,11 @@ public class TraiterOptions {
 				switch (i) {
 				// On modifie les options si besoin.
 				case 20:
-					System.out.println("option 20");
+					// le numéro 20 correspon à l'HopCount par exemple.
+					String hopCount = OPTMAP.get(i);
+					hopCount = "" + (Integer.parseInt(hopCount) + 1);
+					OPTMAP.put(i, hopCount);
+					System.out.println("*** Hopcount incremente ***");
 					break;
 
 				case 21:

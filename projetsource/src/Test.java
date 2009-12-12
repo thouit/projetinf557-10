@@ -1,5 +1,6 @@
 /**
  * Classe de Test pour la mise en forme, la création et la lecture des messages
+ * pour le thread, ...
  * 
  * @author Thomas
  * 
@@ -8,18 +9,18 @@ public class Test {
 
 	public static void main(String[] args) {
 
-//		// création d'une instance du Thread
-//		InterfaceThread thread = new InterfaceThread();
-//		// Activation du Thread
-//		thread.start();
-//		while (true) {
-//			System.out.println("Ligne affichée par le main");
-//			try {
-//				//pause
-//				Thread.sleep(800);
-//			} catch (InterruptedException ex) {
-//			}
-//		}
+		// // création d'une instance du Thread
+		// InterfaceThread thread = new InterfaceThread();
+		// // Activation du Thread
+		// thread.start();
+		// while (true) {
+		// System.out.println("Ligne affichée par le main");
+		// try {
+		// //pause
+		// Thread.sleep(800);
+		// } catch (InterruptedException ex) {
+		// }
+		// }
 
 		Msg msg = new Msg(CreationMsg.create());
 		if (msg != null && msg.header != null) {

@@ -1,5 +1,9 @@
 /***
- * Classe qui traite le header et ses options
+ * Classe qui traite le header et ses options Cette classe à été remplacée par
+ * la classe Message qui gère un message dans sa globalité. C'est elle qui va
+ * découper le message en Header, Option...
+ * 
+ * Cette classe est maintenant obsolète
  * 
  * @author Thomas
  * 

@@ -27,7 +27,8 @@ public class CreationMsg {
 		octetchar = (char) (octet & 0xff);
 		indiceOption = (char) ((byte) (25) & 0xff);
 		OPTIONS[1] = indiceOption + "" + octetchar + val2;
-		String opt = indiceOption + "" + octetchar +""+ val1+indiceOption + "" + octetchar + val2;
+		// String opt = indiceOption + "" + octetchar +""+ val1+indiceOption +
+		// "" + octetchar + val2;
 		String msg = buildMsg("127.000.000.001", "127.000.000.002", 2, OPTIONS, "DATA");
 		return msg;
 	}
