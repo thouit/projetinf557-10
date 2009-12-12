@@ -12,7 +12,7 @@ public class Msg {
 	String body;
 
 	/**
-	 * Découpage du message en 3 parties : Header Options & Body
+	 * Decoupage du message en 3 parties : Header Options & Body
 	 * 
 	 * @param msg
 	 */

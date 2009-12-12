@@ -1,6 +1,6 @@
 /**
- * Classe qui facilite la création des message pour l'utilisateur. Il est
- * possible de rentrer des parmamètres "lisibles" et le programme construit le
+ * Classe qui facilite la creation des message pour l'utilisateur. Il est
+ * possible de rentrer des parmametres "lisibles" et le programme construit le
  * message correspondant.
  * 
  * @author Thomas
@@ -9,7 +9,7 @@
 public class CreationMsg {
 
 	/**
-	 * Génère un message générique pour tester les fonctions du programme
+	 * Genere un message generique pour tester les fonctions du programme
 	 * 
 	 * @return
 	 */
@@ -27,12 +27,13 @@ public class CreationMsg {
 		octetchar = (char) (octet & 0xff);
 		indiceOption = (char) ((byte) (25) & 0xff);
 		OPTIONS[1] = indiceOption + "" + octetchar + val2;
+		String opt = indiceOption + "" + octetchar +""+ val1+indiceOption + "" + octetchar + val2;
 		String msg = buildMsg("127.000.000.001", "127.000.000.002", 2, OPTIONS, "DATA");
 		return msg;
 	}
 
 	/**
-	 * Encode une adresse ip entrée sous la forme "XXX.XXX.XXX.XXX"
+	 * Encode une adresse ip entree sous la forme "XXX.XXX.XXX.XXX"
 	 * 
 	 * @param NAME
 	 * @return
@@ -46,7 +47,7 @@ public class CreationMsg {
 	}
 
 	/**
-	 * Formate un message en fonctions des valeurs entrée.
+	 * Formate un message en fonctions des valeurs entree.
 	 * 
 	 * @param DEST
 	 * @param FROM
@@ -80,7 +81,7 @@ public class CreationMsg {
 		}
 		// System.out.println(DATAL1);
 		// System.out.println(DATAL2);
-		String msg = DATAL1 + "" + DATAL2 + "" + dest1 + "" + dest2 + "" + dest3 + "" + dest4 + "" + from1 + "" + from2 + "" + from3 + "" + from4 + "" + NBOPTIONS + options + DATA;
+		String msg = DATAL2 + "" + DATAL1 + "" + dest1 + "" + dest2 + "" + dest3 + "" + dest4 + "" + from1 + "" + from2 + "" + from3 + "" + from4 + "" + NBOPTIONS + options + DATA;
 		return msg;
 	}
 

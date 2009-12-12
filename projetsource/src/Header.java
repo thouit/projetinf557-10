@@ -40,7 +40,7 @@ public class Header {
 	}
 
 	/**
-	 * On extrait les en têtes du header
+	 * On extrait les en tetes du header
 	 */
 	public void traiterHeader() {
 		// System.out.println(header);
@@ -52,7 +52,7 @@ public class Header {
 	}
 
 	/**
-	 * On traite les options en les stockant dans une hasmap avec comme clé leur
+	 * On traite les options en les stockant dans une hasmap avec comme cle leur
 	 * type (un entier) et comme valeur leur contenu
 	 */
 	public void traiterOptions() {
@@ -63,11 +63,11 @@ public class Header {
 			pos++;
 			int taille = options.charAt(pos);
 			pos++;
-			System.out.println("Numéro de l'option : " + opt + " Taille de l'option : " + taille);
+			System.out.println("Numero de l'option : " + opt + " Taille de l'option : " + taille);
 			if (!to.OPTMAP.containsKey(opt)) {
 				to.OPTMAP.put(opt, options.substring(pos, pos + taille));
 			} else {
-				System.out.println("*** Warning : Deux options sont identiques. La dernière n'est pas prise en compte ***");
+				System.out.println("*** Warning : Deux options sont identiques. La derniere n'est pas prise en compte ***");
 			}
 			pos += taille;
 		}
@@ -77,8 +77,8 @@ public class Header {
 	}
 
 	/**
-	 * Permet de reconstruire le message après avoir modifié les options, pour
-	 * le réenvoyer.
+	 * Permet de reconstruire le message apres avoir modifie les options, pour
+	 * le reenvoyer.
 	 * 
 	 * @return
 	 */

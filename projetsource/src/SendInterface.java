@@ -13,8 +13,11 @@ public class SendInterface extends javax.swing.JFrame implements ActionListener 
 	 */
 	private static final long serialVersionUID = 1L;
 
+	PhysicalLayer pl;
+
 	/** Creates new form SendInterface */
-	public SendInterface() {
+	public SendInterface(PhysicalLayer pl) {
+		this.pl=pl;
 		initComponents();
 	}
 
@@ -59,24 +62,24 @@ public class SendInterface extends javax.swing.JFrame implements ActionListener 
 
 		setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-		jLabel1.setText("Destinataire :");
+		jLabel1.setText("Source :");
 
-		jLabel2.setText("Source :");
+		jLabel2.setText("Destinataire :");
 
 		jLabel3.setText("Nombre d'options :");
 
 		jLabel4.setText("Options :");
 
-		jLabel5.setText("Données :");
+		jLabel5.setText("Donnees :");
 
-		jTextField1.setText("127.000.000.001");
+		jTextField1.setText("100.100.100.100");
 		jTextField1.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent evt) {
 				jTextField1ActionPerformed(evt);
 			}
 		});
 
-		jTextField2.setText("127.000.000.002");
+		jTextField2.setText("101.101.101.101");
 		jTextField2.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent evt) {
 				jTextField2ActionPerformed(evt);
@@ -421,13 +424,13 @@ public class SendInterface extends javax.swing.JFrame implements ActionListener 
 	 * @param args
 	 *            the command line arguments
 	 */
-	public static void main(String args[]) {
+	/*public static void main(String args[]) {
 		java.awt.EventQueue.invokeLater(new Runnable() {
 			public void run() {
-				new SendInterface().setVisible(true);
+				new SendInterface(pl).setVisible(true);
 			}
 		});
-	}
+	}*/
 
 	// Variables declaration - do not modify
 	private javax.swing.JTextField id1;
@@ -501,8 +504,7 @@ public class SendInterface extends javax.swing.JFrame implements ActionListener 
 	private javax.swing.JTextField val9;
 
 	// End of variables declaration
-	@Override
-	public void actionPerformed(ActionEvent e) {
+	public void actionPerformed(ActionEvent e){
 		if (e.getActionCommand().equals("Envoyer")) {
 			String DEST = jTextField1.getText();
 			String FROM = jTextField2.getText();
@@ -580,7 +582,10 @@ public class SendInterface extends javax.swing.JFrame implements ActionListener 
 			}
 			String DATA = jTextPane1.getText();
 			String msg = CreationMsg.buildMsg(FROM, DEST, NBOPTIONS, OPTIONS, DATA);
-			System.out.println(msg);
+			Message mess = new Message(msg);
+			System.out.print("ENVOI : ");
+			mess.print();
+			pl.send(mess);
 		}
 
 	}

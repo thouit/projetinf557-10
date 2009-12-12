@@ -75,7 +75,7 @@ class PhysicalLayer {
   }
 
 
-  public void send(String message) {
+  public void send(Message message) {
 
     Random ran = new Random();
 
@@ -85,7 +85,7 @@ class PhysicalLayer {
     if(ran.nextInt(100) <= successRate)
       {
 	
-	byte[] buf = message.getBytes();
+	byte[] buf = message.construireMessage().getBytes();
 	
 	try
 	  {
@@ -107,7 +107,7 @@ class PhysicalLayer {
       }
   }
 
-  public String receive() {			
+  public Message receive() {			
     return rb.receive();
   }
 
@@ -191,7 +191,7 @@ class ReceivedBuffer {
 	return receiveBuffer.isEmpty();
     }
 
-  public String receive() {			
+  public Message receive() {			
     try
       {
 	String s = receiveBuffer.removeLast();
@@ -203,8 +203,12 @@ class ReceivedBuffer {
 		Thread.sleep(100); 
 	    }
 	catch(InterruptedException e) {System.out.println(e); System.exit(0);}
-
-	return s;
+	if(s!=null){
+	    Message mess = new Message(s);
+	    return mess;
+	}else{
+	    return null;
+	}
       }
     catch(NoSuchElementException e) {return null;}
   }
