@@ -506,76 +506,131 @@ public class SendInterface extends javax.swing.JFrame implements ActionListener 
 		if (e.getActionCommand().equals("Envoyer")) {
 			String DEST = jTextField1.getText();
 			String FROM = jTextField2.getText();
-			int NBOPTIONS = Integer.parseInt(jTextField3.getText());
+			int NBOPTIONS = 0;
+			try{
+			NBOPTIONS = Integer.parseInt(jTextField3.getText());
+			} catch (NumberFormatException exc){
+				System.out.println("*** Attention ce ce n'est pas un entier ! ***");
+			}
 			String[] OPTIONS = new String[NBOPTIONS];
 			if (NBOPTIONS > 0) {
 				int n = val1.getText().length();
 				byte octet = (byte) (n);
 				char octetchar = (char) (octet & 0xff);
-				char indiceOption = (char) ((byte) (Integer.parseInt(id1.getText())) & 0xff);
+				char indiceOption = (char) ((byte) (0 & 0xff));
+				try{
+				indiceOption = (char) ((byte) (Integer.parseInt(id1.getText())) & 0xff);
+				} catch (NumberFormatException exc){
+					System.out.println("*** Attention ce ce n'est pas un entier ! ***");
+				}
 				OPTIONS[0] = indiceOption + "" + octetchar + val1.getText();
 			}
 			if (NBOPTIONS > 1) {
 				int n = val2.getText().length();
 				byte octet = (byte) (n);
 				char octetchar = (char) (octet & 0xff);
-				char indiceOption = (char) ((byte) (Integer.parseInt(id2.getText())) & 0xff);
+				char indiceOption = (char) ((byte) (0 & 0xff));
+				try{
+				indiceOption = (char) ((byte) (Integer.parseInt(id2.getText())) & 0xff);
+				} catch (NumberFormatException exc){
+					System.out.println("*** Attention ce ce n'est pas un entier ! ***");
+				}
 				OPTIONS[1] = indiceOption + "" + octetchar + val2.getText();
 			}
 			if (NBOPTIONS > 2) {
 				int n = val3.getText().length();
 				byte octet = (byte) (n);
 				char octetchar = (char) (octet & 0xff);
-				char indiceOption = (char) ((byte) (Integer.parseInt(id3.getText())) & 0xff);
+				char indiceOption = (char) ((byte) (0 & 0xff));
+				try{
+				indiceOption = (char) ((byte) (Integer.parseInt(id3.getText())) & 0xff);
+				} catch (NumberFormatException exc){
+					System.out.println("*** Attention ce ce n'est pas un entier ! ***");
+				}
 				OPTIONS[2] = indiceOption + "" + octetchar + val3.getText();
 			}
 			if (NBOPTIONS > 3) {
 				int n = val4.getText().length();
 				byte octet = (byte) (n);
 				char octetchar = (char) (octet & 0xff);
-				char indiceOption = (char) ((byte) (Integer.parseInt(id4.getText())) & 0xff);
+				char indiceOption = (char) ((byte) (0 & 0xff));
+				try{
+				indiceOption = (char) ((byte) (Integer.parseInt(id4.getText())) & 0xff);
+				} catch (NumberFormatException exc){
+					System.out.println("*** Attention ce ce n'est pas un entier ! ***");
+				}
 				OPTIONS[3] = indiceOption + "" + octetchar + val4.getText();
 			}
 			if (NBOPTIONS > 4) {
 				int n = val5.getText().length();
 				byte octet = (byte) (n);
 				char octetchar = (char) (octet & 0xff);
-				char indiceOption = (char) ((byte) (Integer.parseInt(id5.getText())) & 0xff);
+				char indiceOption = (char) ((byte) (0 & 0xff));
+				try{
+				indiceOption = (char) ((byte) (Integer.parseInt(id5.getText())) & 0xff);
+				} catch (NumberFormatException exc){
+					System.out.println("*** Attention ce ce n'est pas un entier ! ***");
+				}
 				OPTIONS[4] = indiceOption + "" + octetchar + val5.getText();
 			}
 			if (NBOPTIONS > 5) {
 				int n = val6.getText().length();
 				byte octet = (byte) (n);
 				char octetchar = (char) (octet & 0xff);
-				char indiceOption = (char) ((byte) (Integer.parseInt(id6.getText())) & 0xff);
+				char indiceOption = (char) ((byte) (0 & 0xff));
+				try{
+				indiceOption = (char) ((byte) (Integer.parseInt(id6.getText())) & 0xff);
+				} catch (NumberFormatException exc){
+					System.out.println("*** Attention ce ce n'est pas un entier ! ***");
+				}
 				OPTIONS[5] = indiceOption + "" + octetchar + val6.getText();
 			}
 			if (NBOPTIONS > 6) {
 				int n = val7.getText().length();
 				byte octet = (byte) (n);
 				char octetchar = (char) (octet & 0xff);
-				char indiceOption = (char) ((byte) (Integer.parseInt(id7.getText())) & 0xff);
+				char indiceOption = (char) ((byte) (0 & 0xff));
+				try{
+				indiceOption = (char) ((byte) (Integer.parseInt(id7.getText())) & 0xff);
+				} catch (NumberFormatException exc){
+					System.out.println("*** Attention ce ce n'est pas un entier ! ***");
+				}
 				OPTIONS[6] = indiceOption + "" + octetchar + val7.getText();
 			}
 			if (NBOPTIONS > 7) {
 				int n = val8.getText().length();
 				byte octet = (byte) (n);
 				char octetchar = (char) (octet & 0xff);
-				char indiceOption = (char) ((byte) (Integer.parseInt(id8.getText())) & 0xff);
+				char indiceOption = (char) ((byte) (0 & 0xff));
+				try{
+				indiceOption = (char) ((byte) (Integer.parseInt(id8.getText())) & 0xff);
+				} catch (NumberFormatException exc){
+					System.out.println("*** Attention ce ce n'est pas un entier ! ***");
+				}
 				OPTIONS[7] = indiceOption + "" + octetchar + val8.getText();
 			}
 			if (NBOPTIONS > 8) {
 				int n = val9.getText().length();
 				byte octet = (byte) (n);
 				char octetchar = (char) (octet & 0xff);
-				char indiceOption = (char) ((byte) (Integer.parseInt(id9.getText())) & 0xff);
+				char indiceOption = (char) ((byte) (0 & 0xff));
+				try{
+				indiceOption = (char) ((byte) (Integer.parseInt(id9.getText())) & 0xff);
+				} catch (NumberFormatException exc){
+					System.out.println("*** Attention ce ce n'est pas un entier ! ***");
+				}
 				OPTIONS[8] = indiceOption + "" + octetchar + val9.getText();
 			}
 			if (NBOPTIONS > 9) {
 				int n = val10.getText().length();
 				byte octet = (byte) (n);
 				char octetchar = (char) (octet & 0xff);
-				char indiceOption = (char) ((byte) (Integer.parseInt(id10.getText())) & 0xff);
+				char indiceOption = (char) ((byte) (0 & 0xff));
+				try{
+				indiceOption = (char) ((byte) (Integer.parseInt(id10.getText())) & 0xff);
+				} catch (NumberFormatException exc){
+					System.out.println("*** Attention ce ce n'est pas un entier ! ***");
+				}
 				OPTIONS[9] = indiceOption + "" + octetchar + val10.getText();
 			}
 			String DATA = jTextPane1.getText();
