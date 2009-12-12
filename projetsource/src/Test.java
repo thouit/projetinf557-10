@@ -35,7 +35,7 @@ public class Test {
 //			msg.print();
 //		}
 		
-		String s = "1";
+		//String s = "1";
 		String t = "t";
 		try{
 		Integer.parseInt(t);
